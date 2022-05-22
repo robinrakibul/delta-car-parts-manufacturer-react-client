@@ -5,6 +5,8 @@ import Cards from './Cards';
 import BusinessInfo from './BusinessInfo';
 import Parts from '../Pages/Parts/Parts';
 import Reviews from '../Pages/Reviews/Reviews';
+import FlashDeal from './FlashDeal';
+import Contact from '../Pages/Contact/Contact';
 const Home = () => {
     return (
         <div>
@@ -12,7 +14,9 @@ const Home = () => {
             <Cards></Cards>
             <Parts></Parts>
             <Reviews></Reviews>
+            <FlashDeal></FlashDeal>
             <BusinessInfo></BusinessInfo>
+            <Contact></Contact>
         </div>
     );
 };

@@ -20,7 +20,7 @@ const SingleParts = ({ item }) => {
                     Description: {description.slice(0, 55)}...
                 </p>
                 <div className='text-center'>
-                    <button type="button" onClick={navigateToPurchase} className=" inline-block px-4 py-4 mb-5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out mt-10">Purchase Now</button>
+                    <button type="button" onClick={navigateToPurchase} className=" inline-block px-4 py-4 mb-5 bg-yellow-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-yellow-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-500 active:shadow-lg transition duration-150 ease-in-out mt-10">Purchase Now</button>
                 </div>
             </div>
         </div>
