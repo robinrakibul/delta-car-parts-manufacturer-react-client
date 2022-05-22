@@ -10,7 +10,7 @@ const Reviews = () => {
     }, [])
     return (
         <>
-            <div>
+            <div id='reviews'>
                 <h1 className='mt-10 mb-1 text-3xl font-semibold text-center'>BUYER REVIEWS</h1>
                 <h2 className='text-lg font-light mx-auto w-1/2 mb-5'>Many of our buyers are happy with our products and left some reviews</h2>
             </div>

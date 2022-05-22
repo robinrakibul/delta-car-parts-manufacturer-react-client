@@ -10,8 +10,8 @@ const Header = () => {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a href='#tools'>Tools</a></li>
-                        <li><a>Reviews</a></li>
-                        <li><a>Business Summary</a></li>
+                        <li><a href='#reviews'>Reviews</a></li>
+                        <li><a href='#businessInfo'>Business Summary</a></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-2xl font-[merienda]" href='!#'>Del<span className='text-yellow-300'>ta</span></a>
@@ -19,8 +19,8 @@ const Header = () => {
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><a href='#tools'>Tools</a></li>
-                    <li><a>Reviews</a></li>
-                    <li><a>Business Summary</a></li>
+                    <li><a href='#reviews'>Reviews</a></li>
+                    <li><a href='#businessInfo'>Business Summary</a></li>
                 </ul>
             </div>
         </div>
