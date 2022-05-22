@@ -1,0 +1,38 @@
+[
+    {
+        "name":"Shannon Hopkins",
+        "rating":4,
+        "comment":"Great drone with many advanced features. I had purchased the drone from this website and had fun using it",
+        "image":"https://randomuser.me/api/portraits/women/61.jpg"
+    },
+    {
+        "name":"Mr Tim",
+        "rating":4.5,
+        "comment":"Best product from Mavic, Loved it! Recommended to buy. I have captured a lot of natural travelling videos.",
+        "image":"https://randomuser.me/api/portraits/men/97.jpg"
+    },
+    {
+        "name":"Patt Nicola",
+        "rating":5,
+        "comment":"This drone is awesome. I have never flown anything in the sky before and was extremely nervous before the first flight!",
+        "image":"https://randomuser.me/api/portraits/men/81.jpg"
+    },
+    {
+        "name":"Caroline Chapman",
+        "rating":5,
+        "comment":"Heard so many great things and have watched friends fly this drone and it is amazing!",
+        "image":"https://randomuser.me/api/portraits/women/81.jpg"
+    },
+    {
+        "name":"Mr Travis",
+        "rating":4.6,
+        "comment":"I don't even know where to start. This thing is amazing!",
+        "image":"https://randomuser.me/api/portraits/men/50.jpg"
+    },
+    {
+        "name":"Mr Michael",
+        "rating":4.5,
+        "comment":"I purchased this as my travel drone that would be easy to take with me on trips or for quick shoots.",
+        "image":"https://randomuser.me/api/portraits/men/34.jpg"
+    }
+]
