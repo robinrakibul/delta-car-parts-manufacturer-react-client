@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 import engine from '../../images/car-engine.webp';
 const Banner = () => {
     return (
@@ -8,7 +9,7 @@ const Banner = () => {
                 <div className='ml-10 mr-10'>
                     <h1 className="text-lg font-bold">Delta Manufacturer</h1>
                     <p className="py-6 md:text-6xl font-semibold text-4xl">Best Auto Car Parts Available!</p>
-                    <button className="btn btn-white text-base uppercase pl-12 pr-12 mt-5">Purchase Now</button>
+                    <HashLink to='/home#contact' className="btn btn-white text-base uppercase pl-12 pr-12 mt-5">Contact Us</HashLink>
                 </div>
             </div>
         </div>

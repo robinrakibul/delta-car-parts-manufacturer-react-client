@@ -4,12 +4,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { HashLink } from 'react-router-hash-link';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const [user] = useAuthState(auth);
 
     const logout = () => {
         signOut(auth);
+        toast.success('You have been logged out');
         localStorage.removeItem('accessToken');
     };
 
@@ -17,7 +19,7 @@ const Header = () => {
         <li><HashLink to="/">Home</HashLink></li>
         <li><HashLink to="/home#tools">Tools</HashLink></li>
         <li><HashLink to="/home#reviews">Review</HashLink></li>
-        <li><HashLink to="/home#businessInfo">Business Summary</HashLink></li>
+        <li><HashLink to="/home#businessInfo">Business</HashLink></li>
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }

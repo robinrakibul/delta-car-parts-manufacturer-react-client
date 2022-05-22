@@ -41,7 +41,6 @@ const Register = () => {
         const password = event.target.password.value;
         await createUserWithEmailAndPassword(email, password);
         const {data} = await axios.post('https://manufacturer-node-server.herokuapp.com/login', {email});
-        console.log(data);
         localStorage.setItem('accessToken',data.accessToken);
         event.target.reset();
         navigate('/home');
