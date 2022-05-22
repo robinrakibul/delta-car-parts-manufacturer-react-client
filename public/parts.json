@@ -1,0 +1,56 @@
+[
+    {
+      "title": "car door",
+      "supplier": "Rogen Joseph",
+      "price": 150,
+      "quantity": 200,
+      "minOrder": 30,
+      "description": "A manufacturer auto spare car front door wholesale",
+      "image": "https://i.ibb.co/0tGBRHY/car-door.jpg"
+    },
+    {
+      "title": "Car Bumper",
+      "supplier": "Amy Nguyen",
+      "price": 330,
+      "quantity": 100,
+      "minOrder": 20,
+      "description": "Car Bumper Guard Front Bumper Body Kit Body Kit With Bumper Side Skirt",
+      "image": "https://i.ibb.co/g6FKfLF/car-bumper.webp"
+    },
+    {
+      "title": "Car Windsheild",
+      "supplier": "Daniel Jr",
+      "price": 600,
+      "quantity": 200,
+      "minOrder": 40,
+      "description": "We could produce most kinds of car windshield glasses, like Japanes cars glass, American car glass, Chinese car glasses, you should just provide the order list, then we could provide the appropriated size and price to you asap.",
+      "image": "https://i.ibb.co/7vzgfwD/car-windshield.webp"
+    },
+    {
+      "title": "Engine Carburator",
+      "supplier": "Chris James",
+      "price":120,
+      "quantity": 200,
+      "minOrder": 20,
+      "description": "Universal Carburetor 38x38 DGAS 2 Barrel Carburetor for Car Fiat Renault Ford VW BMW",
+      "image": "https://i.ibb.co/b14nqWd/engine-carburator.jpg"
+    },
+    {
+      "title": "Car Engine Motor Oil",
+      "supplier": "Romero Raan",
+      "price": 3.50,
+      "quantity": 400,
+      "minOrder": 10,
+    "description": "Chinese manufacture latest model cars engine motor oil (Quantity available in Litres). Quality standards of American and European are available.",
+      "image": "https://i.ibb.co/mqw7krh/HTB16-Amoe-AOWBu-Nj-Ssppq6x-Pgp-Xaf.jpg"
+    },
+    {
+      "title": "Super Car Rims",
+      "supplier": "Chris James",
+      "price": 1300,
+      "quantity": 20,
+      "minOrder": 20,
+      "description": "Professional made car wheel cover wear-resistant 73.1mm flow-formed wheels alloy car wheel rim",
+      "image": "https://i.ibb.co/kSPZK75/Hd17cb9b468bc4a119349dda3221383a4k.jpg"
+    }
+  ]
