@@ -1,19 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SingleParts = ({ item }) => {
-    const { _id, title, image, price, description, supplier, quantity, minOrder } = item;
+    const { title, image, price, description, supplier, quantity, minOrder } = item;
+    let navigate = useNavigate();
+    const navigateToPurchase = () => {
+        navigate('/purchase');
+    }
     return (
         <div className='flex justify-center mb-5'>
-            <div className="card w-96 glass rounded-lg shadow-xl p-5">
-                <h5 className="text-gray-900 text-xl font-medium mb-5">{title}</h5>
-                <figure><img src={image} alt="" width="300px" className="rounded-t-lg object-cover" /></figure>
-                <p className='font-bold'>Price: <span className='text-blue-500 '>{'$' + price}</span></p>
+            <div className="card w-96 glass rounded-lg shadow-xl pl-5 pr-5 pb-2 pt-2">
+                <h5 className="text-blue-700 text-xl font-medium mb-5 mt-2">Name: {title}</h5>
+                <figure><img src={image} alt="" className="rounded-lg object-fill max-w-72 max-h-72 cursor-pointer" /></figure>
+                <p className='font-bold mt-4'>Price: <span className='text-blue-500 '>{'$' + price}</span></p>
                 <small>Supplier: {supplier}</small>
-                <p className='text-xl font-bold'>Available Quantity: {quantity}</p>
-                <p className='text-xl font-bold'>Minimum Order Required: {minOrder}</p>
-                <p className="text-gray-700 text-base">
-                    {description.slice(0, 50)}...
+                <p className='text-xl font-bold mt-2'>Available Quantity: {quantity}</p>
+                <p className='text-xl font-bold mt-2'>Minimum Order Required: {minOrder}</p>
+                <p className="text-gray-700 text-base mt-2">
+                    Description: {description.slice(0, 55)}...
                 </p>
+                <div className='text-center'>
+                    <button type="button" onClick={navigateToPurchase} className=" inline-block px-4 py-4 mb-5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out mt-10">Purchase Now</button>
+                </div>
             </div>
         </div>
     );
