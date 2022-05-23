@@ -1,23 +1,44 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import registerImg from '../../images/register.svg';
 import google from '../../images/google-signin-button.png';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import axios from 'axios';
+import useToken from '../../hooks/useToken';
+import { useForm } from 'react-hook-form';
 const Register = () => {
-    const [agree, setAgree] = useState(false);
-    const [ createUserWithEmailAndPassword, user, loading, error ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [signInWithGoogle, user1, loading2, error2] = useSignInWithGoogle(auth);
+    const { register, handleSubmit } = useForm();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    // Google Login
-    const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || user1);
+
+    const navigate = useNavigate();
 
     let errorOccured;
-    const navigate = useNavigate();
-    const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
 
-    if (loading || loading2) {
+    if (error || error2 || updateError) {
+        errorOccured = <p className='text-red-500'><small>{error?.message || error2?.message || updateError?.message}</small></p>
+    }
+
+    if (token) {
+        navigate('/appointment');
+    }
+
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        console.log('update done');
+    }
+
+    if (loading || loading2 || updating) {
         // Spinner
         return <div className='flex justify-center align-middle'>
             <svg role="status" className="inline mt-52 mb-52 mr-2 w-10 h-10 text-black animate-spin fill-yellow-400" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,24 +48,11 @@ const Register = () => {
         </div>
     }
 
-    if (error || error2) {
-     errorOccured = <p className='text-red-500'>Error: {error?.message}</p>
-    }
 
-    if (user || user2) {
-        navigate(from, { replace: true });
-    }
-
-    const doRegister = async (event) => {
-        event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        await createUserWithEmailAndPassword(email, password);
-        const {data} = await axios.post('https://manufacturer-node-server.herokuapp.com/login', {email});
-        localStorage.setItem('accessToken',data.accessToken);
-        event.target.reset();
+    if (token) {
         navigate('/home');
     }
+
 
     return (
         <div className='text-black font-[poppins] flex flex-col md:flex-row items-center md:justify-between mb-10'>
@@ -53,16 +61,40 @@ const Register = () => {
             </div>
             <div className='mr-10 w-3/4'>
                 <h2 className='text-yellow-400 text-center text-xl font-medium mt-10 mb-5'>Register Here</h2>
-                <form onSubmit={doRegister} className='grid grid-rows-4 gap-4'>
-                    <input className='p-2 mb-3 border-2 border-gray-400 rounded text-black' type="email" name="email" id="" placeholder='Email Address' required />
+                <form onSubmit={handleSubmit(onSubmit)} className='grid grid-rows-3 gap-4'>
+                    <input
+                        type="email"
+                        placeholder="Your Email"
+                        className="input input-bordered w-full"
+                        {...register("email", {
+                            required: {
+                                value: true,
+                                message: 'Email is Required'
+                            },
+                            pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                message: 'Provide a valid Email'
+                            }
+                        })}
+                    />
 
-                    <input className='p-2 mb-3 border-2 border-gray-400 rounded text-black' type="password" name="password" id="" placeholder='Password' required />
-                    <div className='inline mt-4'>
-                        <input onClick={() => setAgree(!agree)} className="mr-2" type="checkbox" name="terms" id="terms" />
-                        <label className={`${agree ? 'text-green-400' : 'text-red-500'}`}>Accept Our Terms and Conditions</label>
-                    </div>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="input input-bordered w-full"
+                        {...register("password", {
+                            required: {
+                                value: true,
+                                message: 'Password is Required'
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'Must be 6 characters or longer'
+                            }
+                        })}
+                    />
                     <div className='items-center text-white'>
-                        <button disabled={!agree} className='pt-3 pb-3 pl-4 pr-4 w-52 rounded bg-yellow-400 hover:bg-yellow-500 mb-5' data-mdb-ripple="true" data-mdb-ripple-color="light">Register</button>
+                        <button className='pt-3 pb-3 pl-4 pr-4 w-52 rounded bg-yellow-400 hover:bg-yellow-500 mb-5' data-mdb-ripple="true" data-mdb-ripple-color="light">Register</button>
                     </div>
                 </form>
                 {errorOccured}

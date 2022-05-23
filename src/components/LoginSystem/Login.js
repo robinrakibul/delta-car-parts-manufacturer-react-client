@@ -1,40 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../images/login.svg';
 import google from '../../images/google-signin-button.png';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import useToken from '../../hooks/useToken';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
-
-    const emailreference = useRef('');
-    const passwordreference = useRef('');
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-    // Email Login
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-    // Google Login
-    const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
     let errorOccured;
+    const [signInWithGoogle, user1, loading2, error2] = useSignInWithGoogle(auth);
+    const { register, handleSubmit } = useForm();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const [token] = useToken(user || user1);
+
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    
-    const resetPassword = async () => {
-        const email = emailreference.current.value;
-        if (email) {
-            await sendPasswordResetEmail(email);
-            toast.success('Email sent!');
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
         }
-        else {
-            toast.warn('Please enter your email address correctly');
-        }
-    }
+    }, [token, from, navigate])
 
-    if (loading || loading2 || sending) {
+    if (loading || loading2) {
         // Spinner
         return <div className='flex justify-center align-middle'>
             <svg role="status" className="inline mt-52 mb-52 mr-2 w-10 h-10 text-black animate-spin fill-yellow-400" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,36 +46,52 @@ const Login = () => {
         errorOccured = <p className='text-red-500'>Error: {error?.message}</p>
     }
 
-    if (user2) {
-         navigate(from, { replace: true });
-    }
-
-    const loginFormSubmit = async event => {
-        event.preventDefault();
-        const email = emailreference.current.value;
-        const password = passwordreference.current.value;
-        await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('https://manufacturer-node-server.herokuapp.com/login', {email});
-        localStorage.setItem('accessToken',data.accessToken);
-        if(user){
-            navigate('/home');
-        }
-    }
-
-    const navigateReg = event =>{
+    const navigateReg = event => {
         navigate('/register');
     }
-    
+
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password);
+    }
+
     return (
         <div className='flex flex-col mt-5 mb-10 items-center md:justify-between md:flex-row md:mb-10 md:mt-0 font-[poppins]'>
             <div className='w-full ml-10'>
                 <img width='450px' src={loginImg} alt="" />
             </div>
             <div className='text-black mr-10 mt-10 container w-3/4'>
-                <form onSubmit={loginFormSubmit} className='grid grid-rows-4 gap-4'>
+                <form onSubmit={handleSubmit(onSubmit)} className='grid grid-rows-4 gap-4'>
                     <h2 className='text-yellow-400 text-center mt-5 text-xl font-medium'>Login Here</h2>
-                    <input className="text-black p-2 mb-3 border-2 border-gray-400 rounded" type="email" ref={emailreference} placeholder='Enter Your Email' required />
-                    <input className="text-black p-2 mb-3 border-2 border-gray-400 rounded" type="password" ref={passwordreference} placeholder='Enter Your Password' required />
+                    <input
+                        type="email"
+                        placeholder="Your Email"
+                        className="input input-bordered w-full"
+                        {...register("email", {
+                            required: {
+                                value: true,
+                                message: 'Email is Required'
+                            },
+                            pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                message: 'Provide a valid Email'
+                            }
+                        })}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="input input-bordered w-full"
+                        {...register("password", {
+                            required: {
+                                value: true,
+                                message: 'Password is Required'
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'Must be 6 characters or longer'
+                            }
+                        })}
+                    />
                     <div className='items-center'>
                         <button className='pt-3 pb-3 pl-4 pr-4 w-52 rounded bg-yellow-400 hover:bg-yellow-500 mb-5 text-white' data-mdb-ripple="true" data-mdb-ripple-color="light">Login</button>
                     </div>
@@ -91,7 +104,6 @@ const Login = () => {
                     </button>
                 </div>
                 <p className='mt-3 mb-1'>New Here? <Link className='text-yellow-400 font-medium' to='/register' onClick={navigateReg}>Register</Link></p>
-                <p>Forget Password? <button className='text-yellow-400 font-medium' onClick={resetPassword}>Reset Password</button> </p>                
             </div>
         </div>
     );
