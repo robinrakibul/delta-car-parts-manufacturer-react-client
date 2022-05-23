@@ -31,7 +31,7 @@ const Purchase = () => {
             orderAddress: event.target.address.value,
         }
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://manufacturer-node-server.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +41,7 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if(data.acknowledged==true){
+                if(data.acknowledged === true){
                     toast.success('Order successfully added')
                 }
                 else(
