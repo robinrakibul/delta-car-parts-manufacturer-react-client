@@ -1,7 +1,6 @@
 [
     {
       "title": "car door",
-      "supplier": "Rogen Joseph",
       "price": 150,
       "quantity": 200,
       "minOrder": 30,
@@ -10,7 +9,6 @@
     },
     {
       "title": "Car Bumper",
-      "supplier": "Amy Nguyen",
       "price": 330,
       "quantity": 100,
       "minOrder": 20,
@@ -19,7 +17,6 @@
     },
     {
       "title": "Car Windsheild",
-      "supplier": "Daniel Jr",
       "price": 600,
       "quantity": 200,
       "minOrder": 40,
@@ -28,7 +25,6 @@
     },
     {
       "title": "Engine Carburator",
-      "supplier": "Chris James",
       "price":120,
       "quantity": 200,
       "minOrder": 20,
@@ -37,7 +33,6 @@
     },
     {
       "title": "Car Engine Motor Oil",
-      "supplier": "Romero Raan",
       "price": 3.50,
       "quantity": 400,
       "minOrder": 10,
@@ -46,7 +41,6 @@
     },
     {
       "title": "Super Car Rims",
-      "supplier": "Chris James",
       "price": 1300,
       "quantity": 20,
       "minOrder": 20,
