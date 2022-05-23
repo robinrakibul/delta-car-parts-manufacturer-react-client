@@ -63,6 +63,17 @@ const Register = () => {
                 <h2 className='text-yellow-400 text-center text-xl font-medium mt-10 mb-5'>Register Here</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='grid grid-rows-3 gap-4'>
                     <input
+                        type="text"
+                        placeholder="Your Name"
+                        className="input input-bordered w-full"
+                        {...register("name", {
+                            required: {
+                                value: true,
+                                message: 'Name is Required'
+                            }
+                        })}
+                    />
+                    <input
                         type="email"
                         placeholder="Your Email"
                         className="input input-bordered w-full"
