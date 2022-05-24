@@ -58,6 +58,7 @@ const Purchase = () => {
                 <hr />
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mt-3 mb-3">Purchasing Item Details:</h1>
                 <h5 className="text-lg tracking-tight text-gray-900 dark:text-white"><span className='font-semibold'>Product Name: </span>{items.title}</h5>
+                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white"><span className='font-semibold'>Product Price: </span>${items.price}</h5>
                 <img className="p-4 rounded-lg border-2 mt-2 mb-2 w-96" src={items.image} alt="" />
                 <h5 className="text-lg tracking-tight text-gray-900 dark:text-white"><span className='font-semibold'>Description: </span>{items.description}</h5>
                 <h5 className="text-xl border-t-2 border-b-2 border-yellow-400 tracking-tight text-gray-900 dark:text-white">Available Quantity: <span className='font-bold'>{items.quantity}</span></h5>

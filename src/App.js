@@ -9,10 +9,14 @@ import Login from './components/LoginSystem/Login';
 import Register from './components/LoginSystem/Register';
 import RequireAdmin from './components/LoginSystem/RequireAdmin';
 import RequireAuth from './components/LoginSystem/RequireAuth';
+import AddProducts from './components/Pages/Dashboard/AddProducts/AddProducts';
 import AddReview from './components/Pages/Dashboard/AddReview';
+import AllOrders from './components/Pages/Dashboard/AllOrders';
 import AllUsers from './components/Pages/Dashboard/AllUsers';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
+import ManageProducts from './components/Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
+import UpdateProfile from './components/Pages/Dashboard/UpdateProfile';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import Purchase from './components/Pages/Purchase/Purchase';
 import auth from './firebase.init';
@@ -40,7 +44,11 @@ function App() {
           <Route index element={admin ? <AllUsers></AllUsers> : <MyOrders></MyOrders>}></Route>
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="allorders" element={<AllOrders></AllOrders>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="updateprofile" element={<UpdateProfile></UpdateProfile>}></Route>
+          <Route path="manageproducts" element={<ManageProducts></ManageProducts>}></Route>
+          <Route path="addproducts" element={<AddProducts></AddProducts>}></Route>
           <Route path="users" element={
             <RequireAdmin>
               <AllUsers></AllUsers>
