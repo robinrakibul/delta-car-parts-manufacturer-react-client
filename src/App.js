@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/LoginSystem/Login';
 import Register from './components/LoginSystem/Register';
+import RequireAdmin from './components/LoginSystem/RequireAdmin';
 import RequireAuth from './components/LoginSystem/RequireAuth';
 import AddReview from './components/Pages/Dashboard/AddReview';
 import AllUsers from './components/Pages/Dashboard/AllUsers';
@@ -35,7 +36,11 @@ function App() {
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="users" element={<AllUsers></AllUsers>}></Route>
+          <Route path="users" element={
+            <RequireAdmin>
+              <AllUsers></AllUsers>
+            </RequireAdmin>
+          }></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
