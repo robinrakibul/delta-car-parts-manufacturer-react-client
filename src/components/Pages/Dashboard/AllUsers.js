@@ -1,8 +1,9 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import AllUsersData from './AllUsersData';
 
 const AllUsers = () => {
-    const { data, isLoading } = useQuery('users', () => fetch('https://manufacturer-node-server.herokuapp.com/users').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://manufacturer-node-server.herokuapp.com/users').then(res => res.json()));
     if (isLoading) {
         return <div className='flex justify-center align-middle'>
             <svg role="status" className="inline mt-52 mb-52 mr-2 w-10 h-10 text-black animate-spin fill-yellow-400" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +14,21 @@ const AllUsers = () => {
     }
     return (
         <div>
-            <h2>All Users :{data.length}</h2>
+            <h2>All Users :{users.length}</h2>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map(user=><AllUsersData key={user._id} user={user} refetch={refetch}></AllUsersData>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
