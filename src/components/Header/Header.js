@@ -38,10 +38,11 @@ const Header = () => {
                 </div>
                 <Link to="/" className="btn btn-ghost text-2xl font-[merienda]" href='!#'>Del<span className='text-yellow-300'>ta</span></Link>
             </div>
-            <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
+            <div className="navbar-end lg:flex">
+                <ul className="menu menu-horizontal hidden md:flex lg:flex p-0">
                     {menuItems}
                 </ul>
+                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">Sidebar</label>
             </div>
         </div>
     );
