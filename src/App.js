@@ -14,9 +14,9 @@ import AddReview from './components/Pages/Dashboard/AddReview';
 import AllOrders from './components/Pages/Dashboard/AllOrders';
 import AllUsers from './components/Pages/Dashboard/AllUsers';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
-import EachProfile from './components/Pages/Dashboard/EachProfile';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './components/Pages/Dashboard/MyOrders/MyOrders';
+import MyProfile from './components/Pages/Dashboard/MyProfile/MyProfile';
 import UpdateProfile from './components/Pages/Dashboard/UpdateProfile';
 import Purchase from './components/Pages/Purchase/Purchase';
 import auth from './firebase.init';
@@ -45,18 +45,13 @@ function App() {
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
           <Route path="allorders" element={<AllOrders></AllOrders>}></Route>
-          <Route path="myprofile" element={<EachProfile></EachProfile>}></Route>
+          <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
           <Route path="updateprofile" element={<UpdateProfile></UpdateProfile>}></Route>
           <Route path="manageproducts" element={<ManageProducts></ManageProducts>}></Route>
           <Route path="addproducts" element={<AddProducts></AddProducts>}></Route>
           <Route path="users" element={
             <RequireAdmin>
               <AllUsers></AllUsers>
-            </RequireAdmin>
-          }></Route>
-          <Route path="users/:email" element={
-            <RequireAdmin>
-              <EachProfile></EachProfile>
             </RequireAdmin>
           }></Route>
         </Route>
