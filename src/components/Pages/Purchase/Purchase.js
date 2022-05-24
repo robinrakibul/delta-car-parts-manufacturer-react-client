@@ -25,11 +25,11 @@ const Purchase = () => {
 
         const order = {
             productId: items._id,
-            orderEmail: event.target.email.value,
-            orderItemName: items.title,
-            orderItemPrice: items.price,
-            orderQuantity: event.target.quantityInput.value,
-            orderAddress: event.target.address.value,
+            email: event.target.email.value,
+            name: items.title,
+            price: items.price,
+            quantity: event.target.quantityInput.value,
+            address: event.target.address.value,
         }
 
         fetch(`https://manufacturer-node-server.herokuapp.com/order/${user.email}`, {

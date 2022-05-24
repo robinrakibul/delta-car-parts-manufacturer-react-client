@@ -16,7 +16,7 @@ import AllUsers from './components/Pages/Dashboard/AllUsers';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import EachProfile from './components/Pages/Dashboard/EachProfile';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts/ManageProducts';
-import MyOrders from './components/Pages/Dashboard/MyOrders';
+import MyOrders from './components/Pages/Dashboard/MyOrders/MyOrders';
 import UpdateProfile from './components/Pages/Dashboard/UpdateProfile';
 import Purchase from './components/Pages/Purchase/Purchase';
 import auth from './firebase.init';

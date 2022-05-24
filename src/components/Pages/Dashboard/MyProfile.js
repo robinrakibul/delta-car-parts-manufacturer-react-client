@@ -7,7 +7,7 @@ const MyProfile = () => {
     const email = user.email;
     const [profiles, setProfiles] = useState([]);
     useEffect(() => {
-        fetch(`https://manufacturer-node-server.herokuapp.com/users/${user.email}`,{
+        fetch(`https://manufacturer-node-server.herokuapp.com/users/${email}`,{
             method: 'GET',
         })
             .then(res => res.json())

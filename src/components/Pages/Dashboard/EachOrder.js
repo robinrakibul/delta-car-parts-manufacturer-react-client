@@ -1,17 +1,17 @@
 import React from 'react';
 
 const EachOrder = ({ order }) => {
-    const { _id, productId, orderEmail, orderItemName, orderItemPrice, orderQuantity, orderAddress } = order;
+    const { _id, productId, email, name, price, quantity, address } = order;
     return (
         <tbody>
             {/* <!-- row --> */}
             <tr>
                 <th>{productId}</th>
-                <td>{orderEmail}</td>
-                <td>{orderItemName}</td>
-                <td>${orderItemPrice}</td>
-                <td>{orderQuantity}</td>
-                <td>{orderAddress}</td>
+                <td>{email}</td>
+                <td>{name}</td>
+                <td>${price}</td>
+                <td>{quantity}</td>
+                <td>{address}</td>
             </tr>
         </tbody>
     );
