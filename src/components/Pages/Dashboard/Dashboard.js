@@ -11,7 +11,7 @@ const Dashboard = () => {
         <div>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col">
+                <div className="drawer-content flex flex-col m-5">
                     <h2 className='text-3xl text-yellow-400'>Dashboard</h2>
                     <Outlet></Outlet>
                 </div>
@@ -20,10 +20,13 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to="/dashboard">Dashboard</Link></li>
-                        <li><Link to="/dashboard/addreview">Add Review</Link></li>
-                        <li><Link to="/dashboard/myorders">My Orders</Link></li>
+                        { user && !admin && <li><Link to="/dashboard/addreview">Add Review</Link></li>}
+                        { user && !admin && <li><Link to="/dashboard/myorders">My Orders</Link></li>}
                         <li><Link to="/dashboard/myprofile">My Profile</Link></li>
                         { admin && <li><Link to="/dashboard/users">All Users</Link></li>}
+                        { admin && <li><Link to="/dashboard/users">Manage All Orders</Link></li>}
+                        { admin && <li><Link to="/dashboard/users">Add A Product</Link></li>}
+                        { admin && <li><Link to="/dashboard/users">Manage Products</Link></li>}
                     </ul>
 
                 </div>

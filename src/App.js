@@ -1,3 +1,4 @@
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
@@ -14,8 +15,12 @@ import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import Purchase from './components/Pages/Purchase/Purchase';
+import auth from './firebase.init';
+import Admin from './hooks/Admin';
 
 function App() {
+  const [user] = useAuthState(auth);
+  const [admin] = Admin(user);
   return (
     <div className="App">
       <Header></Header>
@@ -32,7 +37,7 @@ function App() {
             <Dashboard></Dashboard>
           </RequireAuth>
         }>
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route index element={admin ? <AllUsers></AllUsers> : <MyOrders></MyOrders>}></Route>
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
