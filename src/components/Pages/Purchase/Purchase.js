@@ -24,14 +24,15 @@ const Purchase = () => {
         event.preventDefault();
 
         const order = {
-            orderId: items._id,
+            productId: items._id,
+            orderEmail: event.target.email.value,
             orderItemName: items.title,
             orderItemPrice: items.price,
             orderQuantity: event.target.quantityInput.value,
             orderAddress: event.target.address.value,
         }
 
-        fetch('https://manufacturer-node-server.herokuapp.com/order', {
+        fetch(`https://manufacturer-node-server.herokuapp.com/order/${user.email}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -41,10 +42,10 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if(data.acknowledged === true){
+                if (data.acknowledged === true) {
                     toast.success('Order successfully added')
                 }
-                else(
+                else (
                     toast.error('Order failed, try again later')
                 )
             })
@@ -64,6 +65,9 @@ const Purchase = () => {
                 <form className='grid grid-rows-2 gap-4 mt-10' onSubmit={handleOrder}>
                     <h5 className="text-xl border-yellow-400 tracking-tight text-gray-900 dark:text-white">Insert Your Order Quantity:
                         <span className='font-bold'>
+                            <input type="text" name='email' required 
+                                placeholder="Your Email" value={user.email} readOnly
+                                className="max-w-sm bg-gray-200 rounded-lg input-bordered w-full mb-4" />
                             <input min={items.minOrder} max={items.quantity}
                                 type="number" name='quantityInput' required
                                 placeholder="Order Quantity" ref={quantityInputRef}

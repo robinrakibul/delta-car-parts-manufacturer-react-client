@@ -21,7 +21,6 @@ const AllUsersData = ({ user, refetch }) => {
                     refetch();
                     toast.success(`Successfully made an admin`);
                 }
-
             })
 
     }
