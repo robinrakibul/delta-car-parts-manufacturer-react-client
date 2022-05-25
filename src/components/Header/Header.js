@@ -20,6 +20,7 @@ const Header = () => {
         <li><HashLink to="/home#tools">Tools</HashLink></li>
         <li><HashLink to="/home#reviews">Review</HashLink></li>
         <li><HashLink to="/home#businessInfo">Business</HashLink></li>
+        <li><HashLink to="/portfolio">My Portfolio</HashLink></li>
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
