@@ -17,6 +17,7 @@ import Dashboard from './components/Pages/Dashboard/Dashboard';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './components/Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile/MyProfile';
+import Payment from './components/Pages/Dashboard/Payment/Payment';
 import UpdateProfile from './components/Pages/Dashboard/UpdateProfile';
 import Purchase from './components/Pages/Purchase/Purchase';
 import auth from './firebase.init';
@@ -44,6 +45,7 @@ function App() {
           <Route index element={admin ? <AllUsers></AllUsers> : <MyOrders></MyOrders>}></Route>
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="allorders" element={<AllOrders></AllOrders>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
           <Route path="updateprofile" element={<UpdateProfile></UpdateProfile>}></Route>

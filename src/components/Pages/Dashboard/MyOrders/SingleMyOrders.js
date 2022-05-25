@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleMyOrders = ({ order }) => {
     return (
@@ -10,7 +11,11 @@ const SingleMyOrders = ({ order }) => {
                     <h2>Order Quantity: <span class="font-bold">{order.quantity}</span></h2>
                     <h2>Delivery Address: <span class="font-bold">{order.address}</span></h2>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Pay Now</button>
+                        {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-warning'>pay</button></Link>}
+                        {(order.price && order.paid) && <div>
+                            <p><span className='text-success'>Paid</span></p>
+                            <p>Transaction id: <span className='text-success'>{order.transactionId}</span></p>
+                        </div>}
                         {/* <!-- The button to open modal --> */}
                         <label for="my-modal" class="btn modal-button">Delete</label>
 
