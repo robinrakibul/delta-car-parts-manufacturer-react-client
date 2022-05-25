@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
 const EachOrder = ({ order }) => {
     const { _id, productId, email, name, price, quantity, totalCost, address, paid, status } = order;
+    const handleStatus = (id) => {
+        const url = `https://manufacturer-node-server.herokuapp.com/allorders/${id}`;
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
@@ -35,14 +48,10 @@ const EachOrder = ({ order }) => {
                 <td>${totalCost}</td>
                 <td>{address}</td>
                 <td>{paid ? <p className='text-green-500'>Paid</p> : <p className='text-red-500'>Unpaid</p>}</td>
-                <td><p>Status: <span className='text-red-500'>Pending</span></p> <select className='rounded m-2'>
-                    <option value="pending">Pending</option>
-                    <option value="shipped">Shipped </option>
-                </select>
-                    <br />
-                    <p className='text-white btn btn-error btn-xs'>Change Status</p>
+                <td>{status? <p>Status: <span className='text-green-500 mb-3'>Shipped</span></p> : <p>Status: <span className='text-red-500 mb-3'>Pending</span></p>}
+                    <p className='text-white btn btn-error btn-xs' onClick={()=>{handleStatus(_id)}}>Change Status</p>
                 </td>
-                <td><button class="btn btn-xs" onClick={() => handleDeleteAnItem(_id)}>Delete</button></td>
+                <td><button className="btn btn-xs" onClick={() => handleDeleteAnItem(_id)}>Delete</button></td>
 
             </tr>
         </tbody>
