@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const SingleMyOrders = ({ order }) => {
-    const { _id, name, price, quantity, address, transactionId } = order;
+    const { _id, name, price, quantity, address } = order;
+
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
@@ -38,23 +39,12 @@ const SingleMyOrders = ({ order }) => {
                             <p>Transaction id: <span className='text-success'>{order.transactionId}</span></p>
                         </div>}
                         {/* <!-- The button to open modal --> */}
-                        {(!order.paid) && <label for="my-modal" class="btn modal-button" onClick={() => handleDeleteAnItem(_id)}>Delete</label>}
+                        {(!order.paid) && <button for="my-modal" class="btn modal-button" onClick={() => handleDeleteAnItem(_id)}>Delete</button>}
 
-                        {/* <!-- Put this part before </body> tag -->
-                        <input type="checkbox" id="my-modal" class="modal-toggle" />
-                        <div class="modal">
-                            <div class="modal-box">
-                                <h3 class="font-bold text-lg">Are you sure to delete the order?</h3>
-                                <div class="modal-action">
-                                    <label onClick={() => handleDeleteAnItem(_id)} class="btn btn-error text-white">Delete</label>
-                                    <label for="my-modal" class="btn">Close</label>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

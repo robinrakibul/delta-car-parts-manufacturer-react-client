@@ -7,7 +7,7 @@ const AllOrders = () => {
         fetch('https://manufacturer-node-server.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [orders])
     return (
         <div>
             <h2 className='mt-5 font-bold text-3xl mb-2'>All orders</h2>
@@ -15,12 +15,16 @@ const AllOrders = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Product Id</th>
-                            <th>Order Email</th>
                             <th>Order Item Name</th>
+                            <th>Order Email</th>
+                            <th>Product ID</th>
                             <th>Order Item Price</th>
                             <th>Order Quantity</th>
+                            <th>Total Cost</th>
                             <th>Order Address</th>
+                            <th>Paid</th>
+                            <th>Status</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     {
