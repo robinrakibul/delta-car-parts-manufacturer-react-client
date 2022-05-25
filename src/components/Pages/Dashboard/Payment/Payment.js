@@ -1,6 +1,9 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import CheckoutForm from './CheckoutForm';
 
 const Payment = () => {
     const { id } = useParams();
@@ -16,22 +19,26 @@ const Payment = () => {
             </svg>
         </div>
     }
+
+    // stripe publishable key
+    const stripePromise = loadStripe('pk_test_51L3AgABZoFStfzGxqLEtpxlMcqZNuU1Esm5CM9h4F0UPSfU7TgQq1gxdGeScQuy04GxyTSXWlnhJ4VNn09aTGxe100RM4sBWdq');
     return (
-        <div>
-            <div class="card max-w-md w-50 bg-base-100 shadow-xl">
+        <div className='m-10'>
+            <div class="card max-w-md w-50 bg-base-100 shadow-2xl mt-10">
                 <div class="card-body">
                     <h2 class="card-title">Pay For : {myorder.name}</h2>
                     <p>Single {myorder.name} price is : <span>${myorder.price}</span></p>
                     <p>Quantity is : <span>{myorder.quantity}</span></p>
                     <p>Please Pay : <span className='text-red-500 font-bold text-xl'>${myorder.price * myorder.quantity}</span></p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
                     </div>
                 </div>
             </div>
-            <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
+            <div class="card mt-5 flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
                 <div class="card-body">
-
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm myorder={myorder} />
+                    </Elements>
                 </div>
             </div>
         </div>
