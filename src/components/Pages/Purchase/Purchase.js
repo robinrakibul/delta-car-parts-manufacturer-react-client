@@ -30,6 +30,7 @@ const Purchase = () => {
             price: items.price,
             quantity: event.target.quantityInput.value,
             address: event.target.address.value,
+            totalCost: items.price * event.target.quantityInput.value,
         }
 
         fetch(`https://manufacturer-node-server.herokuapp.com/order/${user.email}`, {

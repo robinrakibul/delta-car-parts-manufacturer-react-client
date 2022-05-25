@@ -11,10 +11,11 @@ const CheckoutForm = ({ myorder }) => {
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [successDone, setSuccessDone] = useState('');
+    const [loading, setLoading] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { price, email } = myorder;
+    const { _id, totalCost, email } = myorder;
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
@@ -22,7 +23,7 @@ const CheckoutForm = ({ myorder }) => {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify({ price })
+            body: JSON.stringify({ totalCost })
         })
             .then(res => res.json())
             .then(data => {
@@ -31,7 +32,7 @@ const CheckoutForm = ({ myorder }) => {
                 }
             });
 
-    }, [[price]])
+    }, [[totalCost]])
 
 
     const handleSubmit = async (event) => {
@@ -74,6 +75,7 @@ const CheckoutForm = ({ myorder }) => {
 
         if (intentError) {
             setCardError(intentError?.message)
+            setLoading(false);
         }
         else {
             setCardError('');
@@ -82,6 +84,23 @@ const CheckoutForm = ({ myorder }) => {
             setSuccessDone('Your Payment is completed!')
             toast.success('Your Payment is completed!')
             setTransactionId(paymentIntent.id)
+            
+             //store payment on database
+             const payment = {
+                order: _id,
+                transactionId: paymentIntent.id
+            }
+            fetch(`http://localhost:5000/myorders/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(payment)
+            }).then(res=>res.json())
+            .then(data => {
+                setLoading(false);
+                console.log(data);
+            })
         }
     }
     return (
