@@ -8,10 +8,10 @@ const AddProducts = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
 
-
+// LEFT BUG
     const onSubmit = data => {
         console.log(data);
-        const url = 'http://localhost:5000/items';
+        const url = 'https://manufacturer-node-server.herokuapp.com/items';
         fetch(url, {
             method: 'POST',
             headers: {

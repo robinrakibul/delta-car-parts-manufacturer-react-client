@@ -7,7 +7,7 @@ const ManageEachProducts = ({ item }) => {
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
-            const url = `http://localhost:5000/items/${id}`;
+            const url = `https://manufacturer-node-server.herokuapp.com/items/${id}`;
             console.log(id);
             fetch(url, {
                 method: 'DELETE',
