@@ -7,7 +7,7 @@ import CheckoutForm from './CheckoutForm';
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/myorders/${id}`;
+    const url = `https://manufacturer-node-server.herokuapp.com/myorders/${id}`;
 
     const { data: myorder, isLoading } = useQuery('myorders', () => fetch(url).then(res => res.json()));
 
