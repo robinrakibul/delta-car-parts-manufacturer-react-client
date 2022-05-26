@@ -38,7 +38,7 @@ const EachOrder = ({ order }) => {
         <tbody>
             {/* <!-- row --> */}
             <tr>
-                <th>{name}</th>
+                <td>{name}</td>
                 <td>{email}</td>
                 <td>{productId}</td>
                 <td>${price}</td>

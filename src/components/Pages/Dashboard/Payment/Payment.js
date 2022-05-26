@@ -24,7 +24,8 @@ const Payment = () => {
     const stripePromise = loadStripe('pk_test_51L3AgABZoFStfzGxqLEtpxlMcqZNuU1Esm5CM9h4F0UPSfU7TgQq1gxdGeScQuy04GxyTSXWlnhJ4VNn09aTGxe100RM4sBWdq');
     return (
         <div className='m-10'>
-            <div className="card max-w-md w-50 bg-base-100 shadow-2xl mt-10">
+            <h2 className='mt-5 font-bold text-3xl mb-2'>Payment Page</h2>
+            <div className="card max-w-lg w-full bg-base-100 shadow-2xl mt-10">
                 <div className="card-body">
                     <h2 className="card-title">Pay For : {myorder.name}</h2>
                     <p>Single {myorder.name} price is : <span>${myorder.price}</span></p>
@@ -34,7 +35,7 @@ const Payment = () => {
                     </div>
                 </div>
             </div>
-            <div className="card mt-5 flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
+            <div className="card mt-5 flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
                 <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm myorder={myorder} />

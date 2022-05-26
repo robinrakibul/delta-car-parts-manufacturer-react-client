@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <div className="hero min-h-screen bg-base-200 mb-5">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={engine} className="lg:max-w-lg max-w-xs rounded-3xl shadow-xl p-5" alt='' />
+                <img src={engine} className="w-64 md:w-72 lg:w-[450px] rounded-3xl shadow-xl p-5" alt='' />
                 <div className='ml-10 mr-10'>
                     <h1 className="text-lg font-bold">Delta Manufacturer</h1>
                     <p className="py-6 md:text-6xl font-semibold text-4xl">Best Auto Car Parts Available!</p>

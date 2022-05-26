@@ -15,6 +15,7 @@ In this project,
 * User dashboard has myprofile, update profile, add review, my orders, etc features.
 * I have used react router,query to create navigation bar, set route, protect route, restrictions etc.
 * For look and style, I have used tailwind css framework, daisyui, toastify, google font, react-hook-form, etc
+* This is a full stack MERN full interactive website.
 
 <!-- BUILD WITH -->
 ### Tools That Built With
@@ -24,6 +25,7 @@ The main tools I have used in this project:
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Firebase](https://firebase.google.com/)
 * [NodeJs](https://nodejs.org/)
+* [Mongodb](https://www.mongodb.com/)
 * [Heroku](https://dashboard.heroku.com/)
 * [JWT](https://jwt.io/)
 * [Stripe](https://stripe.com/)

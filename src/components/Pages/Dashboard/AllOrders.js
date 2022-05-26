@@ -15,16 +15,16 @@ const AllOrders = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Order Item Name</th>
-                            <th>Order Email</th>
-                            <th>Product ID</th>
-                            <th>Order Item Price</th>
-                            <th>Order Quantity</th>
-                            <th>Total Cost</th>
-                            <th>Order Address</th>
-                            <th>Paid</th>
-                            <th>Status</th>
-                            <th>Delete</th>
+                            <td>Order Item</td>
+                            <td>Order Email</td>
+                            <td>Product ID</td>
+                            <td>Order Item Price</td>
+                            <td>Order Quantity</td>
+                            <td>Total Cost</td>
+                            <td>Order Address</td>
+                            <td>Paid</td>
+                            <td>Status</td>
+                            <td>Cancel Order</td>
                         </tr>
                     </thead>
                     {

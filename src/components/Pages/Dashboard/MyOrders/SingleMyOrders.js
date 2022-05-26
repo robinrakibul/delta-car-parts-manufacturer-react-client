@@ -26,7 +26,7 @@ const SingleMyOrders = ({ order }) => {
     }
     return (
         <div className=''>
-            <div className="card w-full bg-base-100 shadow-xl border-2">
+            <div className="card w-full bg-base-100 shadow-xl border-2 mb-8">
                 <div className="card-body">
                     <h2>Product Name: <span className="card-title">{name}</span></h2>
                     <h2>Product Price: <span className="font-bold">{price}</span></h2>
