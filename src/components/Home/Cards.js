@@ -5,7 +5,11 @@ import carwheels from '../../images/car-wheels.jpg';
 const Cards = () => {
     return (
         <div className='grid mt-5 mb-5 ml-10 mr-10 md:ml-5 md:mr-0 gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+<<<<<<< HEAD
             <div className="card w-72 md:w-96 lg:w-96 glass">
+=======
+            <div className="card w-96 glass">
+>>>>>>> bc54c57ce3754e372335a573e365b781926a97fa
                 <figure><img src={headlights} alt="car!"/></figure>
                 <div className="card-body">
                     <h2 className="card-title font-light">Cheap Cost</h2>
