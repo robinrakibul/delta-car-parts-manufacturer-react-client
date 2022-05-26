@@ -4,7 +4,7 @@ import interior from '../../images/interior.jpg';
 import carwheels from '../../images/car-wheels.jpg';
 const Cards = () => {
     return (
-        <div className='grid mt-5 mb-5 ml-10 md:ml-5 gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid mt-5 mb-5 ml-10 mr-10 md:ml-5 md:mr-0 gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             <div className="card w-96 glass">
                 <figure><img src={headlights} alt="car!"/></figure>
                 <div className="card-body">

@@ -30,7 +30,7 @@ const Header = () => {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
         <li>{user ? <button className="btn btn-ghost" onClick={logout} >Sign Out</button> : <Link to="/login">Login</Link>}</li>
-        </>
+    </>
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -48,7 +48,9 @@ const Header = () => {
                 <ul className="menu menu-horizontal hidden md:flex lg:flex p-0">
                     {menuItems}
                 </ul>
-                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">Sidebar</label>
+                {
+                    user && <label htmlFor="my-drawer-2" className="btn btn-xs lg:hidden">Sidebar</label>
+                }
             </div>
         </div>
     );
