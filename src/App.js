@@ -10,6 +10,7 @@ import Login from './components/LoginSystem/Login';
 import Register from './components/LoginSystem/Register';
 import RequireAdmin from './components/LoginSystem/RequireAdmin';
 import RequireAuth from './components/LoginSystem/RequireAuth';
+import Blogs from './components/Pages/Blogs/Blogs';
 import AddProducts from './components/Pages/Dashboard/AddProducts/AddProducts';
 import AddReview from './components/Pages/Dashboard/AddReview';
 import AllOrders from './components/Pages/Dashboard/AllOrders';
@@ -61,6 +62,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
       </Routes>
