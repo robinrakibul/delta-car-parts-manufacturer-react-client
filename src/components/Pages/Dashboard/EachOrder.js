@@ -51,7 +51,7 @@ const EachOrder = ({ order }) => {
                 <td>{status? <p>Status: <span className='text-green-500 mb-3'>Shipped</span></p> : <p>Status: <span className='text-red-500 mb-3'>Pending</span></p>}
                     <p className='text-white btn btn-error btn-xs' onClick={()=>{handleStatus(_id)}}>Change Status</p>
                 </td>
-                <td><button className="btn btn-xs" onClick={() => handleDeleteAnItem(_id)}>Delete</button></td>
+                <td><button className="btn btn-xs" onClick={() => handleDeleteAnItem(_id)}>Cancel Order</button></td>
 
             </tr>
         </tbody>
