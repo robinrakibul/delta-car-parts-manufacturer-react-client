@@ -16,15 +16,14 @@ const Contact = () => {
                   mb-6
                   uppercase
                   font-bold
-                  text-[32px]
-                  sm:text-[40px]
-                  lg:text-[36px]
-                  xl:text-[40px]
+                  text-xl
+                  md:text-2xl
+                  lg:text-3xl
                   "
                             >
                                 GET IN TOUCH WITH US
                             </h2>
-                            <p className="text-body-color text-2xl font-light leading-relaxed mb-9">
+                            <p className="text-body-color text-xl md:text-2xl lg:text-2xl font-light leading-relaxed mb-9">
                                 We Would Love To Hear From You
                             </p>
                             <div className="flex mb-8 max-w-[370px] w-full">
