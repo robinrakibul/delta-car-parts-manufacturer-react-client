@@ -5,29 +5,53 @@ import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 
 const AddProducts = () => {
+    const imageStorageKey = '668407857fb1966c7d9cc54e72e02724';
+
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
 
-// LEFT BUG
     const onSubmit = data => {
-        console.log(data);
-        const url = 'https://manufacturer-node-server.herokuapp.com/items';
-        fetch(url, {
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const urlImage = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+
+        fetch(urlImage, {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.acknowledged === true) {
-                    toast.success('Ratings Added Successfully')
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const item = {
+                        title: data.title,
+                        price: data.price,
+                        quantity: data.quantity,
+                        minOrder: data.minOrder,
+                        description: data.description,
+                        image: img
+                    }
+                    //send to db
+                    fetch('http://localhost:5000/items', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(item)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            console.log(inserted);
+                            if (inserted.acknowledged === true) {
+                                toast.success('Product Added Successfully')
+                            }
+                            else {
+                                toast.warn('An Error Occured')
+                            }
+                        })
                 }
-                else {
-                    toast.warn('An Error Occured')
-                }
+                console.log('ImgBB Result', result);
             })
     }
 
@@ -64,11 +88,11 @@ const AddProducts = () => {
                         placeholder="Item Description"
                         className="max-w-sm rounded-lg input-bordered w-full"
                     />
-                    {/* <input  {...register("image")}
+                    <input  {...register("image")}
                         type="file" name='image' required
                         placeholder="Image is required"
-                        className="max-w-sm rounded-lg input input-bordered w-full"
-                    /> */}
+                        className="max-w-sm rounded-xl input input-bordered w-full"
+                    />
                     <div className='text-white'>
                         <button className='pt-3 pb-3 pl-4 pr-4 w-52 rounded-xl bg-yellow-400 hover:bg-yellow-500 mb-10' data-mdb-ripple="true" data-mdb-ripple-color="light">Add Product</button>
                     </div>

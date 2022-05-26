@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const ManageEachProducts = ({ item }) => {
-    const { _id, title, image, price, description, supplier, quantity, minOrder } = item;
+    const { _id, title, image, price, description, quantity, minOrder } = item;
 
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
@@ -31,7 +31,6 @@ const ManageEachProducts = ({ item }) => {
                     <h5 className="text-blue-700 text-xl font-medium mb-5 mt-2">Name: {title}</h5>
                     <figure><img src={image} alt="" className="rounded-lg object-fill max-w-72 max-h-72 cursor-pointer" /></figure>
                     <p className='font-bold mt-4'>Price: <span className='text-blue-500 '>{'$' + price}</span></p>
-                    <small>Supplier: {supplier}</small>
                     <p className='text-xl font-bold mt-2'>Available Quantity: {quantity}</p>
                     <p className='text-xl font-bold mt-2'>Minimum Order Required: {minOrder}</p>
                     <p className="text-gray-700 text-base mt-2">
