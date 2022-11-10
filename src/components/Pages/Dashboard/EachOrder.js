@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const EachOrder = ({ order }) => {
     const { _id, productId, email, name, price, quantity, totalCost, address, paid, status } = order;
     const handleStatus = (id) => {
-        const url = `https://warehouse-management-server-99fk.onrender.com/allorders/${id}`;
+        const url = `https://manufacturer-node-server.onrender.com/allorders/${id}`;
         fetch(url, {
             method: 'PATCH',
             headers: {
@@ -18,7 +18,7 @@ const EachOrder = ({ order }) => {
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
-            const url = `https://warehouse-management-server-99fk.onrender.com/myorders/${id}`;
+            const url = `https://manufacturer-node-server.onrender.com/myorders/${id}`;
             console.log(id);
             fetch(url, {
                 method: 'DELETE',

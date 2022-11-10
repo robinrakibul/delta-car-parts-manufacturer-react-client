@@ -3,7 +3,7 @@
 
 <!-- LIVE WEBSITE LINK -->
 Live Website URL: https://delta-car-parts-manufacturer.web.app/ <br/>
-Live Server URL: https://warehouse-management-server-99fk.onrender.com/
+Live Server URL: https://manufacturer-node-server.onrender.com/
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project

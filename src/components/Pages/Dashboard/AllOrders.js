@@ -4,7 +4,7 @@ import EachOrder from './EachOrder';
 const AllOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('https://warehouse-management-server-99fk.onrender.com/allorders')
+        fetch('https://manufacturer-node-server.onrender.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [orders])

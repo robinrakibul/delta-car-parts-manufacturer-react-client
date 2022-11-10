@@ -10,7 +10,7 @@ const MyOrders = () => {
     useEffect(() => {
         const getItems = async () => {
             const email = user.email;
-            const url = `https://warehouse-management-server-99fk.onrender.com/myorders?email=${email}`;
+            const url = `https://manufacturer-node-server.onrender.com/myorders?email=${email}`;
             const { data } = await axios.get(url, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

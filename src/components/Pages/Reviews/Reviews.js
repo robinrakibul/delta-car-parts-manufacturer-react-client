@@ -4,7 +4,7 @@ import SingleReviews from './SingleReviews';
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('https://warehouse-management-server-99fk.onrender.com/reviews')
+        fetch('https://manufacturer-node-server.onrender.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

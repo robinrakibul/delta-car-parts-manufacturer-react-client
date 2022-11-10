@@ -7,7 +7,7 @@ import CheckoutForm from './CheckoutForm';
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://warehouse-management-server-99fk.onrender.com/myorders/${id}`;
+    const url = `https://manufacturer-node-server.onrender.com/myorders/${id}`;
 
     const { data: myorder, isLoading } = useQuery('myorders', () => fetch(url).then(res => res.json()));
 

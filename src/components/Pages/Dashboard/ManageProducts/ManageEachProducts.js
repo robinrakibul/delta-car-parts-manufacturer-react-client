@@ -7,7 +7,7 @@ const ManageEachProducts = ({ item }) => {
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
-            const url = `https://warehouse-management-server-99fk.onrender.com/items/${id}`;
+            const url = `https://manufacturer-node-server.onrender.com/items/${id}`;
             console.log(id);
             fetch(url, {
                 method: 'DELETE',

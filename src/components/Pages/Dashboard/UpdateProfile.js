@@ -9,7 +9,7 @@ const UpdateProfile = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-        const url = `https://warehouse-management-server-99fk.onrender.com/users/${user.email}`;
+        const url = `https://manufacturer-node-server.onrender.com/users/${user.email}`;
         fetch(url, {
             method: 'PUT',
             headers: {
