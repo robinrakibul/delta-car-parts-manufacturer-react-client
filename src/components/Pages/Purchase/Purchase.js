@@ -11,7 +11,7 @@ const Purchase = () => {
     const quantityInputRef = useRef('');
 
     useEffect(() => {
-        const url = `https://manufacturer-node-server.herokuapp.com/items/${itemsId}`;
+        const url = `https://warehouse-management-server-99fk.onrender.com/items/${itemsId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setitems(data))
@@ -33,7 +33,7 @@ const Purchase = () => {
             totalCost: items.price * event.target.quantityInput.value,
         }
 
-        fetch(`https://manufacturer-node-server.herokuapp.com/order/${user.email}`, {
+        fetch(`https://warehouse-management-server-99fk.onrender.com/order/${user.email}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

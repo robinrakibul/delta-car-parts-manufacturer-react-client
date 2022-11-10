@@ -10,7 +10,7 @@ const MyProfile = () => {
     useEffect(() => {
         const getItems = async () => {
             const email = user.email;
-            const url = `https://manufacturer-node-server.herokuapp.com/profile?email=${email}`;
+            const url = `https://warehouse-management-server-99fk.onrender.com/profile?email=${email}`;
             const { data } = await axios.get(url, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

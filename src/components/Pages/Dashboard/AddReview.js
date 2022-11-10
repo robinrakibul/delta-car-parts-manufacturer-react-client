@@ -9,7 +9,7 @@ const AddReview = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-        const url = `https://manufacturer-node-server.herokuapp.com/reviews`;
+        const url = `https://warehouse-management-server-99fk.onrender.com/reviews`;
         fetch(url, {
             method: 'POST',
             headers: {

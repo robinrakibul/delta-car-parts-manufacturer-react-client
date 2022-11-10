@@ -33,7 +33,7 @@ const AddProducts = () => {
                         image: img
                     }
                     //send to db
-                    fetch('https://manufacturer-node-server.herokuapp.com/items', {
+                    fetch('https://warehouse-management-server-99fk.onrender.com/items', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

@@ -4,7 +4,7 @@ import ManageEachProducts from './ManageEachProducts';
 const ManageProducts = () => {
     const [items, setitems] = useState([]);
     useEffect(() => {
-        fetch('https://manufacturer-node-server.herokuapp.com/items')
+        fetch('https://warehouse-management-server-99fk.onrender.com/items')
             .then(res => res.json())
             .then(data => setitems(data))
     }, [items])

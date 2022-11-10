@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import AllUsersData from './AllUsersData';
 
 const AllUsers = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://manufacturer-node-server.herokuapp.com/users').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://warehouse-management-server-99fk.onrender.com/users').then(res => res.json()));
     if (isLoading) {
         return <div className='flex justify-center align-middle'>
             <svg role="status" className="inline mt-52 mb-52 mr-2 w-10 h-10 text-black animate-spin fill-yellow-400" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

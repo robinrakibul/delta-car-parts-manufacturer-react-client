@@ -8,7 +8,7 @@ const SingleMyOrders = ({ order }) => {
     const handleDeleteAnItem = id => {
         const deletion = window.confirm('Do you really want to delete the item?');
         if (deletion) {
-            const url = `https://manufacturer-node-server.herokuapp.com/myorders/${id}`;
+            const url = `https://warehouse-management-server-99fk.onrender.com/myorders/${id}`;
             console.log(id);
             fetch(url, {
                 method: 'DELETE',
